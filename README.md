@@ -14,7 +14,7 @@ The GenomicModelCreator can be downloaded [here](https://github.com/Tinyman392/G
 
 The kmc.sh script from this repository should be in your PATH variable.  
 
-The models on the BV-BRC FTP are in a zip file, so you'll need the zip command installed on your machine.  Precomputed models can be downloaded [here](ftp://ftp.bvbrc.org//datasets/Nguyen_et_al_2023.zip).
+The models on the BV-BRC (formerly PATRIC) FTP are in a zip file, so you'll need the zip command installed on your machine.  Precomputed models can be downloaded [here](ftp://ftp.bvbrc.org//datasets/Nguyen_et_al_2023.zip).
 
 The prediction script relies on finding the conserved genes used to train the model in an annotated fasta file.  This requires the use of an annotated genome on the [BV-BRC](https://www.bv-brc.org).  This can be done through the web browser or through the [BV-BRC's command line interface](https://www.bv-brc.org/docs/cli_tutorial/index.html).  
 
@@ -34,7 +34,7 @@ The prediction script relies on finding the conserved genes used to train the mo
 
 ## Training Models
 
-A pre-computed set of models can be downloaded from [the BV-BRC FTP site](ftp://ftp.bvbrc.org//datasets/Nguyen_et_al_2023.zip).  This first pipeline is designed to allow you to retrain the same models or even train your own with some modification.  If you wish to just predict on pre-computed models, please go see the [Predicting with models](#predicting-with-Models) section of this README below.  
+A pre-computed set of models can be downloaded from [the BV-BRC FTP site](ftp://ftp.bvbrc.org//datasets/Nguyen_et_al_2023.zip).  This first pipeline is designed to allow you to retrain the same models or even train your own with some modification.  If you wish to just predict on pre-computed models, please go see the [Predicting with models](#predicting-with-Models) section of this README.  
 
 To train your own models, you must download the genomes used for the paper, parse the downloaded genomes, run KMC on the set of conserved genes, cluster the genomes, then finally train on the dataset.  This is done with the following scripts:
 - downloadFTP.sh
@@ -45,7 +45,7 @@ To train your own models, you must download the genomes used for the paper, pars
 
 #### downloadFTP.sh
 
-This script will download a set of genomes from the BV-BRC (formerly PATRIC) FTP database.  This script takes as an argument a file containing a list of genome IDs to download from the FTP database.  This list of genome IDs can be found in the *genomes.gid.lst* file located in this repository.  
+This script will download a set of genomes from the BV-BRC FTP database.  This script takes as an argument a file containing a list of genome IDs to download from the FTP database.  This list of genome IDs can be found in the *genomes.gid.lst* file located in this repository.  
 
 This script will output an ftp directory in the current working directory.  **If the directory exists already, that directory will be deleted and recreated.**
 
@@ -62,7 +62,7 @@ downloadFTP.sh PATH/TO/REPOSITORY/genomes.gid.lst
 This script will parse the BV-BRC ftp directory created by the downloadFTP.sh script.  It takes in various arguments as described below:
 - -f | --ftp : Specify the location of *genomes* directory in the *ftp* directory that was created by the *downloadFTP.sh* script.  This is a required parameter.
 - -g | --gid : Specify a file containing a list of genome IDs to filter off of.  This is an optional parameter
-- -o | --out_pref : Specify the prefix for output files and directories.  The output will be *out_pref*.acc.plf/, out_pref*.con.fasta/, *out_pref*.cnts.tab, *out_pref*.plf.con.lst.  This is an optional parameter; the default value is "outPref".
+- -o | --out_pref : Specify the prefix for output files and directories.  The output will be *out_pref*.acc.plf/, *out_pref*.con.fasta/, *out_pref*.cnts.tab, *out_pref*.plf.con.lst.  This is an optional parameter; the default value is "outPref".
 - -n | --n_plf : Specify the number of top PLFs to get per genome.  This is an optional parameter; the default value is 100.  
 
 ``` bash
@@ -159,7 +159,7 @@ unzip models.100.4000.zip
 
 #### Annotate a Genome
 
-Use the [comprehensive genome analysis](https://www.bv-brc.org/app/ComprehensiveGenomeAnalysis) or [genome annotation](https://www.bv-brc.org/app/Annotation) tool on the BV-BRC to annotate a genome.  This can be done using the web interface or the CLI's [p3-submit-genome-annotation](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-genome-annotation.html) (the comprehensive genome analysis is not yet supported on the CLI.  Note that the genome annotation service requires an assembled genome.  BV-BRC offers a [genome assembly](https://www.bv-brc.org/app/Assembly2) service as well as a tool on the CLI to do it as well called [p3-submit-genome-assembly](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-genome-assembly.html).
+Use the [comprehensive genome analysis](https://www.bv-brc.org/app/ComprehensiveGenomeAnalysis) or [genome annotation](https://www.bv-brc.org/app/Annotation) tool on the BV-BRC to annotate a genome.  This can be done using the web interface or the CLI's [p3-submit-genome-annotation](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-genome-annotation.html) (the comprehensive genome analysis is not yet supported on the CLI).  Note that the genome annotation service requires an assembled genome.  BV-BRC offers a [genome assembly](https://www.bv-brc.org/app/Assembly2) service as well as a tool on the CLI to do it as well called [p3-submit-genome-assembly](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-genome-assembly.html).
 
 You'll need some files from the annotation.  
 
@@ -177,7 +177,7 @@ Once you've annotated the genome, you could use the [p3-cp](https://www.bv-brc.o
 
 Once your genome has been annotated and you've pulled the appropriate files, you can use our prediction software.  It takes the following parameters:
 - -f | --feature_tab : Feature tabular file that you downloaded from your annotated genome (step above).  
-- -p | --cons_plfs : file containing the list of PLFs used to train the model.  For our pre-computed files, it is named *plf.con.lst* in the root directory of this Github.
+- -p | --cons_plfs : file containing the list of PLFs used to train the model.  For our pre-computed models, it is named *plf.con.lst* in the root directory of this Github.
 - -m | --models : directory containing all the models which will be predicted on.  Our precomputed models are on the BV-BRC FTP.  If you trained your own models using the steps above, you would have had to specify your models directory in the last step when training.  
 - -t | --temp_dir : Temporary directory to hold fasta files, KMC output, etc.  This directory may be cleared when running the script!  The default value for this is *temp/*.  
 
