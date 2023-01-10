@@ -2,7 +2,9 @@
 #
 # bash trainPipeline.sh [/PATH/TO/GenomicModelCreator/] <nthread>
 #
-# This script will run the entire prediction pipeline to train the model.  It will only train the first model unless the break statement is commented out
+# This script will run the entire prediction pipeline to train the 
+# model.  It will only train the first model unless the break 
+# statement is commented out
 #
 
 ##
