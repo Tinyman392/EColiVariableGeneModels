@@ -34,7 +34,7 @@ The prediction script relies on finding the conserved genes used to train the mo
 
 ## Training Models
 
-A pre-computed set of models can be downloaded from the BV-BRC FTP site: ftp://ftp.bvbrc.org//datasets/Nguyen_et_al_2023.zip.  This first pipeline is designed to allow you to retrain the same models or even train your own with some modification.  If you wish to just predict on pre-computed models, please go see the [Predicting with models](#predicting-with-Models) section of this README.  
+A pre-computed set of models can be downloaded from the BV-BRC FTP site: ftp://ftp.bvbrc.org//datasets/Nguyen_et_al_2023.zip.  This first pipeline is designed to allow you to retrain the same models or even train your own with some modification.  If you wish to just predict on our pre-computed models, please go see the [Predicting with models](#predicting-with-Models) section of this README.  
 
 To train your own models, you must download the genomes used for the paper, parse the downloaded genomes, run KMC on the set of conserved genes, cluster the genomes, then finally train on the dataset.  This is done with the following scripts:
 - downloadFTP.sh
@@ -159,7 +159,7 @@ unzip models.100.4000.zip
 
 #### Annotate a Genome
 
-Use the [comprehensive genome analysis](https://www.bv-brc.org/app/ComprehensiveGenomeAnalysis) or [genome annotation](https://www.bv-brc.org/app/Annotation) tool on the BV-BRC to annotate a genome.  This can be done using the web interface or the CLI's [p3-submit-genome-annotation](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-genome-annotation.html) (the comprehensive genome analysis is not yet supported on the CLI).  Note that the genome annotation service requires an assembled genome.  BV-BRC offers a [genome assembly](https://www.bv-brc.org/app/Assembly2) service as well as a tool on the CLI to do it as well called [p3-submit-genome-assembly](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-genome-assembly.html).
+Use the [comprehensive genome analysis](https://www.bv-brc.org/app/ComprehensiveGenomeAnalysis) or [genome annotation](https://www.bv-brc.org/app/Annotation) tool on the BV-BRC to annotate a genome.  This can be done using the web interface or the CLI's [p3-submit-genome-annotation](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-genome-annotation.html) or [p3-submit-cga](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-CGA.html) services.  Note that the genome annotation service requires an assembled genome.  BV-BRC offers a [genome assembly](https://www.bv-brc.org/app/Assembly2) service as well as a tool on the CLI to do it as well called [p3-submit-genome-assembly](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-genome-assembly.html).
 
 You'll need some files from the annotation.  
 
