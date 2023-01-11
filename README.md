@@ -14,7 +14,7 @@ The GenomicModelCreator can be downloaded [here](https://github.com/Tinyman392/G
 
 The kmc.sh script from this repository should be in your PATH variable.  
 
-The models on the BV-BRC (formerly PATRIC) FTP are in a zip file, so you'll need the zip command installed on your machine.  Precomputed models can be downloaded <a href="ftp://ftp.bvbrc.org//datasets/Nguyen_et_al_2023.zip">here</a>.
+The models on the BV-BRC (formerly PATRIC) FTP are in a zip file, so you'll need the zip command installed on your machine.  Precomputed models can be downloaded here: ftp://ftp.bvbrc.org//datasets/Nguyen_et_al_2023.zip
 
 The prediction script relies on finding the conserved genes used to train the model in an annotated fasta file.  This requires the use of an annotated genome on the [BV-BRC](https://www.bv-brc.org).  This can be done through the web browser or through the [BV-BRC's command line interface](https://www.bv-brc.org/docs/cli_tutorial/index.html).  
 
@@ -34,7 +34,7 @@ The prediction script relies on finding the conserved genes used to train the mo
 
 ## Training Models
 
-A pre-computed set of models can be downloaded from <a href="ftp://ftp.bvbrc.org//datasets/Nguyen_et_al_2023.zip">the BV-BRC FTP site]</a>.  This first pipeline is designed to allow you to retrain the same models or even train your own with some modification.  If you wish to just predict on pre-computed models, please go see the [Predicting with models](#predicting-with-Models) section of this README.  
+A pre-computed set of models can be downloaded from the BV-BRC FTP site: ftp://ftp.bvbrc.org//datasets/Nguyen_et_al_2023.zip.  This first pipeline is designed to allow you to retrain the same models or even train your own with some modification.  If you wish to just predict on pre-computed models, please go see the [Predicting with models](#predicting-with-Models) section of this README.  
 
 To train your own models, you must download the genomes used for the paper, parse the downloaded genomes, run KMC on the set of conserved genes, cluster the genomes, then finally train on the dataset.  This is done with the following scripts:
 - downloadFTP.sh
