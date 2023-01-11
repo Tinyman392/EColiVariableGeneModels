@@ -161,6 +161,8 @@ unzip models.100.4000.zip
 
 Use the [comprehensive genome analysis](https://www.bv-brc.org/app/ComprehensiveGenomeAnalysis) or [genome annotation](https://www.bv-brc.org/app/Annotation) tool on the BV-BRC to annotate a genome.  This can be done using the web interface or the CLI's [p3-submit-genome-annotation](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-genome-annotation.html) or [p3-submit-cga](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-CGA.html) services.  Note that the genome annotation service requires an assembled genome.  BV-BRC offers a [genome assembly](https://www.bv-brc.org/app/Assembly2) service as well as a tool on the CLI to do it as well called [p3-submit-genome-assembly](https://www.bv-brc.org/docs/cli_tutorial/command_list/p3-submit-genome-assembly.html).
 
+To build the pre-computed models, the PLFam caller version 2018-0531 was used.  The BV-BRC currently does not offer a way to run specific or older version of the annotation system though.
+
 You'll need some files from the annotation.  
 
 If you did a comprehensive genome analysis, you'll find one file named as:
